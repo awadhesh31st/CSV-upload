@@ -38,7 +38,7 @@ const UploadCard: React.FC<UploadCardProps> = ({
               htmlFor="file-input"
               className="mb-2 text-sm font-sm text-charcoal"
             >
-              Drag and drop or <span className="text-orange">choose file</span>{" "}
+              Drag and drop or <span className="text-orange">choose file</span>
               to upload
             </label>
             <p className="text-sm font-sm text-grayLight">CSV only</p>
