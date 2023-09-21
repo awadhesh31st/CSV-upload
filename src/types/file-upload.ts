@@ -10,9 +10,14 @@ export interface UploadCardProps {
 export interface TableDataProps {
   sheetData?: SheetRow[];
   filteredData?: SheetRow[];
+  handleSort?: (column: string) => void;
+  sortKey?: string | null;
+  sortDirection?: SortDirection;
 }
 
 export interface SearchProps {
   searchQuery?: string;
   handleSearchChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
+
+export type SortDirection = 'asc' | 'desc' | null

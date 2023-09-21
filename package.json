@@ -1,9 +1,10 @@
 {
+  "homepage": "https://awadhesh31st.github.io/tailorbird-project",
   "name": "tailorbird-project",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/jest-dom": "^5.17.0", 
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.5.2",
@@ -22,7 +23,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "format": "prettier . --write"
+    "format": "prettier . --write",
+    "predeploy": "bun run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
