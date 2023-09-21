@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { SheetRow } from "../types/file-upload";
+import { useEffect, useState } from "react";
+import { SheetRow, SortDirection } from "../types/file-upload";
 import { uploadFile } from "../utils/file-action";
 
 import UploadCard from "../components/UploadCard";
@@ -10,6 +10,27 @@ const UploadExcel = () => {
   const [sheetData, setSheetData] = useState<SheetRow[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [sortKey, setSortKey] = useState<string | null>(null);
+  const [sortDirection, setSortDirection] = useState<SortDirection>(null);
+
+  useEffect(() => {
+    if (sortKey && sortDirection) {
+      console.log("ddacsa ")
+      const sortedData = [...sheetData].sort((a, b) => {
+        const valueA = a[sortKey!] as string | number;
+        const valueB = b[sortKey!] as string | number;
+
+        if (valueA < valueB) {
+          return sortDirection === "asc" ? -1 : 1;
+        } else if (valueA > valueB) {
+          return sortDirection === "asc" ? 1 : -1;
+        } else {
+          return 0;
+        }
+      });
+      setSheetData(sortedData);
+    }
+  }, [sortKey, sortDirection]);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -41,6 +62,15 @@ const UploadExcel = () => {
         }
       };
       reader.readAsText(file);
+    }
+  };
+
+  const handleSort = (column: string) => {
+    if (sortKey === column) {
+      setSortDirection(sortDirection === "asc" ? "desc" : "asc");
+    } else {
+      setSortKey(column);
+      setSortDirection("asc");
     }
   };
 
@@ -76,6 +106,9 @@ const UploadExcel = () => {
                   <TableData
                     sheetData={sheetData}
                     filteredData={filteredData}
+                    handleSort={handleSort}
+                    sortKey={sortKey}
+                    sortDirection={sortDirection}
                   />
                 </div>
               </div>
