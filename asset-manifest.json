@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/tailorbird-project/static/css/main.f1096362.css",
-    "main.js": "/tailorbird-project/static/js/main.99aeb247.js",
+    "main.js": "/tailorbird-project/static/js/main.9c09469a.js",
     "static/js/787.14f7864c.chunk.js": "/tailorbird-project/static/js/787.14f7864c.chunk.js",
     "index.html": "/tailorbird-project/index.html",
     "main.f1096362.css.map": "/tailorbird-project/static/css/main.f1096362.css.map",
-    "main.99aeb247.js.map": "/tailorbird-project/static/js/main.99aeb247.js.map",
+    "main.9c09469a.js.map": "/tailorbird-project/static/js/main.9c09469a.js.map",
     "787.14f7864c.chunk.js.map": "/tailorbird-project/static/js/787.14f7864c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f1096362.css",
-    "static/js/main.99aeb247.js"
+    "static/js/main.9c09469a.js"
   ]
 }
