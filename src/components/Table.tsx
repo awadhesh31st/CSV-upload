@@ -6,7 +6,7 @@ const TableData: React.FC<TableDataProps> = ({
   filteredData = [],
   handleSort = () => {},
   sortKey,
-  sortDirection
+  sortDirection,
 }) => {
   return (
     <div className="m-4">
@@ -17,13 +17,13 @@ const TableData: React.FC<TableDataProps> = ({
               <th
                 key={header}
                 scope="col"
-                className="px-6 py-2 text-base font-bold text-left capitalize text-coal"
+                className="px-6 py-2 text-base font-bold text-left capitalize cursor-pointer text-coal"
                 onClick={() => handleSort(header)}
               >
                 {header}
                 {sortKey === header && (
-                    <span>{sortDirection === 'asc' ? ' ▲' : ' ▼'}</span>
-                  )}
+                  <span>{sortDirection === "asc" ? " ▲" : " ▼"}</span>
+                )}
               </th>
             ))}
           </thead>

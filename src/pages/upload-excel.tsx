@@ -15,7 +15,6 @@ const UploadExcel = () => {
 
   useEffect(() => {
     if (sortKey && sortDirection) {
-      console.log("ddacsa ")
       const sortedData = [...sheetData].sort((a, b) => {
         const valueA = a[sortKey!] as string | number;
         const valueB = b[sortKey!] as string | number;
@@ -34,35 +33,31 @@ const UploadExcel = () => {
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    setSelectedFile(file || null);
     if (file) {
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        if (event.target) {
-          const result = event.target.result as string;
-          const parsedData = uploadFile(result);
-          setSheetData(parsedData);
-        }
-      };
-      reader.readAsText(file);
+      setSelectedFile(file);
+      getFileData(file);
     }
   };
 
   const handleFileDrop = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     const file = e.dataTransfer.files[0];
-    setSelectedFile(file);
     if (file) {
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        if (event.target) {
-          const result = event.target.result as string;
-          const parsedData = uploadFile(result);
-          setSheetData(parsedData);
-        }
-      };
-      reader.readAsText(file);
+      setSelectedFile(file);
+      getFileData(file);
     }
+  };
+
+  const getFileData = (file: File) => {
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      if (event.target) {
+        const result = event.target.result as string;
+        const parsedData = uploadFile(result);
+        setSheetData(parsedData);
+      }
+    };
+    reader.readAsText(file);
   };
 
   const handleSort = (column: string) => {
@@ -83,8 +78,6 @@ const UploadExcel = () => {
       return value.toString().toLowerCase().includes(searchQuery.toLowerCase());
     });
   });
-
-  console.log(sheetData);
 
   return (
     <>

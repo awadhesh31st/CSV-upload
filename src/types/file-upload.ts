@@ -20,4 +20,4 @@ export interface SearchProps {
   handleSearchChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export type SortDirection = 'asc' | 'desc' | null
+export type SortDirection = "asc" | "desc" | null;
